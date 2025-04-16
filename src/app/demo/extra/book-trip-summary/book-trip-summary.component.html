@@ -1,0 +1,39 @@
+<div class="trip-summary-card">
+  <h2>Résumé du trajet</h2>
+
+  <div class="trip-info">
+    <p><strong>Date :</strong> 10 avril 2025</p>
+    <p><strong>Heure :</strong> 14h30</p>
+    <p><strong>De :</strong> Paris</p>
+    <p><strong>À :</strong> Lyon</p>
+  </div>
+
+  <div class="driver-info">
+    <img src="assets/images/user/avatar-2.jpg" alt="Photo conducteur" class="driver-photo" />
+    <div class="driver-name">Jean Dupont</div>
+  </div>
+
+  <div class="trip-details">
+    <p><strong>Durée :</strong> 4h30</p>
+    <p><strong>Distance :</strong> 460 km</p>
+    <p><strong>Passagers :</strong> 3</p>
+  </div>
+
+  <div class="rating-section">
+    <label>Note :</label>
+    <div class="stars">
+      <ng-container *ngFor="let star of stars; let i = index">
+        <span
+          class="star"
+          [class.filled]="i < rating"
+          (click)="setRating(i + 1)"
+        >&#9733;</span>
+      </ng-container>
+    </div>
+
+    <label for="comment">Avis :</label>
+    <textarea id="comment" [(ngModel)]="comment" placeholder="Laisse ton avis ici..."></textarea>
+
+    <button class="btn-submit" (click)="submitReview()">Envoyer</button>
+  </div>
+</div>
