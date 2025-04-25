@@ -1,17 +1,14 @@
 // angular import
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
-// project import
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { ConfigurationComponent } from 'src/app/theme/layout/admin/configuration/configuration.component';
-import { BreadcrumbsComponent } from '../../shared/components/breadcrumbs/breadcrumbs.component';
+import SpinnerComponent from '../spinner/spinner.component';
 
 @Component({
   selector: 'app-admin',
-  imports: [NavBarComponent, NavigationComponent, RouterModule, CommonModule, ConfigurationComponent, BreadcrumbsComponent],
+  imports: [NavBarComponent, RouterModule, CommonModule, SpinnerComponent],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })

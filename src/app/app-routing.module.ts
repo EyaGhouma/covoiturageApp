@@ -3,47 +3,51 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './theme/layout/admin/admin.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
     children: [
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'home',
         pathMatch: 'full'
       },
       {
-        path: 'dashboard',
-        loadComponent: () => import('./demo/dashboard/dashboard.component').then((c) => c.DashboardComponent)
+        path: 'home',
+        loadComponent: () => import('./components/home/home.component').then((c) => c.HomeComponent)
       },
       {
-        path: 'basic',
-        loadChildren: () => import('./demo/ui-elements/ui-basic/ui-basic.module').then((m) => m.UiBasicModule)
+        path: 'new-trip',
+        loadComponent: () => import('./components/trips/new-trip/new-trip.component')
       },
       {
-        path: 'forms',
-        loadChildren: () => import('./demo/pages/form-elements/form-elements.module').then((m) => m.FormElementsModule)
+        path: 'search-results',
+        loadComponent: () => import('./components/trips/trip-search/trip-search.component')
       },
       {
-        path: 'tables',
-        loadChildren: () => import('./demo/pages/tables/tables.module').then((m) => m.TablesModule)
+        path:'book-trip/:id/:passengers',
+        loadComponent : () => import('./components/book-trip/book-trip.component')
       },
       {
-        path: 'apexchart',
-        loadComponent: () => import('./demo/pages/core-chart/apex-chart/apex-chart.component')
+        path:'book-trip-summary/:carPoolTripId/:driverId/:passengerId',
+        loadComponent : () => import('./components/book-trip-summary/book-trip-summary.component')
       },
       {
-        path: 'sample-page',
-        loadComponent: () => import('./demo/extra/sample-page/sample-page.component')
+        path:'user-profile',
+        loadComponent : () => import('./components/authentication/user-profile/user-profile.component')
       },
       {
-        path:'book-trip',
-        loadComponent : () => import('./demo/extra/book-trip/book-trip.component')
+        path:'my-booking-requests',
+        loadComponent : () => import('./components/my-booking-requests/my-booking-requests.component')
       },
       {
-        path:'book-trip-summary',
-        loadComponent : () => import('./demo/extra/book-trip-summary/book-trip-summary.component')
+        path:'my-bookings',
+        loadComponent : () => import('./components/my-bookings/my-bookings.component')
+      },
+      {
+        path:'driver/:id',
+        loadComponent : () => import('./components/authentication/user-profile-comments/user-profile-commentscomponent')
       }
     ]
   },
@@ -53,7 +57,7 @@ const routes: Routes = [
     children: [
       {
         path: 'auth',
-        loadChildren: () => import('./demo/pages/authentication/authentication.module').then((m) => m.AuthenticationModule)
+        loadChildren: () => import('./components/authentication/authentication.module').then((m) => m.AuthenticationModule)
       }
     ]
   }

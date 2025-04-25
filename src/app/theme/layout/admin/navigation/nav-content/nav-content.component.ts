@@ -4,7 +4,6 @@ import { Location } from '@angular/common';
 
 // project import
 import { environment } from 'src/environments/environment';
-import { NavigationItem, NavigationItems } from '../navigation';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { NavGroupComponent } from './nav-group/nav-group.component';
 
@@ -22,7 +21,6 @@ export class NavContentComponent {
   title = 'Demo application for version numbering';
   currentApplicationVersion = environment.appVersion;
 
-  navigations!: NavigationItem[];
   wrapperWidth: number;
   windowWidth = window.innerWidth;
 
@@ -30,7 +28,6 @@ export class NavContentComponent {
 
   // constructor
   constructor() {
-    this.navigations = NavigationItems;
   }
 
   fireOutClick() {
