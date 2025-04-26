@@ -16,6 +16,9 @@ export default class BookTripComponent implements OnInit {
   carPoolTrip: any;
   passengersNumber = 0;
   isUserConnected = false;
+  hommeSrc = "assets/images/user/avatar-homme.jpg";
+  femmeSrc = "assets/images/user/avatar-femme.jpg";
+
   constructor(
     private carPoolTripService: CarPoolTripService,
     private toastr: ToastrService,
@@ -58,4 +61,18 @@ export default class BookTripComponent implements OnInit {
       }
     });
   }
+  goToDriver(driverId: number) {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree(['/driver', driverId])
+    );
+    window.open(url, '_blank');
+    }
+
+    goToSigIn() {
+      const urlTree = this.router.createUrlTree(['/auth/signin'], {
+        queryParams: { closeAfterLogin: true }
+      });
+      const fullUrl = this.router.serializeUrl(urlTree);
+      window.open(fullUrl, '_blank');
+    }
 }

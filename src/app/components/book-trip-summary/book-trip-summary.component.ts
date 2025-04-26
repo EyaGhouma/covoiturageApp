@@ -20,6 +20,8 @@ export default class BookTripSummaryComponent implements OnInit {
   carPoolTrip: any;
   driverId : number;
   tripId: number;
+  hommeSrc = "assets/images/user/avatar-homme.jpg";
+  femmeSrc = "assets/images/user/avatar-femme.jpg";
   constructor(
     private activatedRoute: ActivatedRoute,
     private carPoolTripService: CarPoolTripService,

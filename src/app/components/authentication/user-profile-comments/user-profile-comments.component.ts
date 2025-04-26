@@ -16,6 +16,7 @@ const isEmpty = (str) => str == null || str == '';
 })
 export default class UserProfileCommentsComponent implements OnInit {
   user : User;
+  src = '';
   constructor(private authService: AuthService, private activatedRouter: ActivatedRoute, private modalService: NgbModal, private toastrService: ToastrService){
 
   }
@@ -30,6 +31,7 @@ export default class UserProfileCommentsComponent implements OnInit {
         {
           next : (response) => {
             this.user = response;
+            this.src = `assets/images/user/avatar-${this.user.gender}.jpg`
           },
           error : (error) => {this.toastrService.error(error.error.message);}
         }

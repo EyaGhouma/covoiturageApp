@@ -16,6 +16,7 @@ const isEmpty = (str) => str == null || str == '';
 })
 export default class UserProfileComponent implements OnInit {
   user : User;
+  src = "";
   constructor(private authService: AuthService, private router: Router, private modalService: NgbModal, private toastrService: ToastrService){
     this.verifyIsUserLoggedIn();
   }
@@ -23,6 +24,7 @@ export default class UserProfileComponent implements OnInit {
     if(this.verifyIsUserLoggedIn()){
       this.authService.getCurrentUser().subscribe((user)=> {
         this.user = user;
+        this.src = `assets/images/user/avatar-${user.gender}.jpg`;
         this.authService.saveUser(user);
       });
     }

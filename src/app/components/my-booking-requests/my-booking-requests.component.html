@@ -32,7 +32,7 @@
         <span style="display: flex;">
           <div class="pro-head" style="margin-top: -10px;">
 
-            <img src="assets/images/user/avatar-1.jpg" class="img-radius" style="width: 50%;" alt="User-Profile-Image" />
+            <img [src]="carPoolTrip?.gender == 'homme'? hommeSrc : femmeSrc" class="img-radius" style="width: 50%;" alt="User-Profile-Image" />
           </div>
           <span>{{carPoolTrip.passengerFullName}}</span>
           <span style="margin-left: 15px;">
@@ -53,4 +53,11 @@
   </div>
 </div>
 
-<h3 *ngIf="!carPoolTripsBookingRequest || carPoolTripsBookingRequest.length == 0">Aucune demande trouvée</h3>
+<div class="container" *ngIf="!carPoolTripsBookingRequest || carPoolTripsBookingRequest.length == 0">
+  <div class="row justify-content-md-center">
+    <div class="col-3">
+      <img src="/assets/images/no-data.png">
+    </div>
+
+  </div>
+</div>

@@ -11,6 +11,8 @@ import { CarPoolTripService } from 'src/app/services/car-pool-trip.service';
 })
 export default class MyBookingRequestsComponent implements OnInit {
   carPoolTripsBookingRequest = [];
+  hommeSrc = "assets/images/user/avatar-homme.jpg";
+  femmeSrc = "assets/images/user/avatar-femme.jpg";
   constructor(
     private carPoolTripService: CarPoolTripService,
     private toastr: ToastrService

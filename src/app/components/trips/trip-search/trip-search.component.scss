@@ -4,7 +4,6 @@ button {
   padding: 0.5rem 1.5rem;
   border-radius: 25px;
   font-weight: bold;
-  cursor: pointer;
 }
 .banner {
   text-align: center;
@@ -65,7 +64,6 @@ button {
 
     button {
       padding: 0.7rem;
-      background: #00b5f1;
       color: white;
       border: none;
       border-radius: 10px;
@@ -74,9 +72,6 @@ button {
       cursor: pointer;
       transition: background 0.2s ease;
 
-      &:hover {
-        background: #0097cb;
-      }
     }
   }
 .timeline-container {

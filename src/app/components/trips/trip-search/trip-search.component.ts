@@ -3,11 +3,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 import { CarPoolTripService } from 'src/app/services/car-pool-trip.service';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 
 @Component({
-  selector: 'app-sample-page',
+  selector: 'app-trip-search',
   standalone: true,
   imports: [SharedModule],
   templateUrl: './trip-search.component.html',
@@ -24,14 +25,21 @@ export default class SamplePageComponent {
   availableSeats = 0;
   searchForm: FormGroup;
   minDate: NgbDateStruct;
-
+  hommeSrc = "assets/images/user/avatar-homme.jpg";
+  femmeSrc = "assets/images/user/avatar-femme.jpg";
+  isUserConnected = false;
+  searchFilter : any;
   constructor(
     private carPoolTripService: CarPoolTripService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private authService: AuthService
   ) {}
   ngOnInit(): void {
+    this.authService.isUserConnected$.subscribe(isUserConnected => {
+      this.isUserConnected = isUserConnected;
+    })
     let today = new Date();
     this.minDate = { year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() };
     this.initForm();
@@ -46,7 +54,7 @@ export default class SamplePageComponent {
       filters.date = {year: Number(date[0]), month: Number(date[1]), day: Number(date[2])};
       this.searchForm.patchValue(filters);
       this.availableSeats = filters.availableSeats;
-      this.search();
+      this.getTrips();
     });
   }
   initForm() {
@@ -85,7 +93,7 @@ export default class SamplePageComponent {
   goToBookingTrip(id: number): void {
     this.router.navigate(['book-trip', id, this.availableSeats]);
   }
-  gotDriver(driverId: number) {
+  goToDriver(driverId: number) {
     const url = this.router.serializeUrl(
       this.router.createUrlTree(['/driver', driverId])
     );
@@ -94,7 +102,7 @@ export default class SamplePageComponent {
 
     search() {
       if (this.searchForm.valid) {
-        let searchFilter = Object.assign({}, this.searchForm.getRawValue());
+        this.searchFilter = Object.assign({}, this.searchForm.getRawValue());
         let formDate = this.searchForm.get('date').value;
         let localDate = new Date(formDate.year, formDate.month - 1, formDate.day);
 
@@ -103,20 +111,29 @@ export default class SamplePageComponent {
         let mm = String(localDate.getMonth() + 1).padStart(2, '0');
         let dd = String(localDate.getDate()).padStart(2, '0');
 
-        searchFilter.date = `${yyyy}-${mm}-${dd}`;
-
-        this.carPoolTripService.search(searchFilter).subscribe({
-          next: (response) => {
-            this.carPoolTrips = response;
-            this.carPoolTripsFilter = this.carPoolTrips.slice(0);
-            this.availableSeats = searchFilter.availableSeats;
-          },
-          error: (error) => {
-            this.toastr.error(error.error.message);
+        this.searchFilter.date = `${yyyy}-${mm}-${dd}`;
+        this.router.navigate(['/search-results'], {
+          queryParams: {
+            departure: this.searchFilter.departure,
+            arrival: this.searchFilter.arrival,
+            availableSeats: this.searchFilter.availableSeats,
+            date: this.searchFilter.date
           }
         });
+
       } else {
         this.searchForm.markAllAsTouched();
       }
+    }
+    getTrips(){
+      this.carPoolTripService.search(this.searchFilter).subscribe({
+        next: (response) => {
+          this.carPoolTrips = response;
+          this.carPoolTripsFilter = this.carPoolTrips.slice(0);
+        },
+        error: (error) => {
+          this.toastr.error(error.error.message);
+        }
+      });
     }
 }

@@ -11,7 +11,6 @@ import { AuthService } from 'src/app/services/auth.service';
 // project import
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 
-const isEmpty = (str) => str == null || str == '';
 @Component({
   selector: 'app-nav-right',
   imports: [SharedModule, RouterModule],
@@ -23,6 +22,8 @@ export class NavRightComponent {
   // public props
   isUserLoggedIn = false;
   user: User;
+  hommeSrc = "assets/images/user/avatar-homme.jpg";
+  femmeSrc = "assets/images/user/avatar-femme.jpg";
   // constructor
   constructor(private authService: AuthService, private toastrService: ToastrService, private route: Router) {
     const config = inject(NgbDropdownConfig);
@@ -45,5 +46,11 @@ export class NavRightComponent {
         this.route.navigateByUrl('/home');
       }
     , error: (error) => {this.toastrService.error(error.error.message)} });
+  }
+  goToSignIn(){
+    this.route.navigateByUrl('/auth/signin');
+  }
+  goToNewTrip(){
+    this.route.navigateByUrl('/new-trip');
   }
 }

@@ -35,14 +35,14 @@
 
       <input type="number" name="duration" placeholder="Durée" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['duration'].touched && carPoolTripFrom.controls['duration'].invalid}"  formControlName="duration"/>
       <div class="invalid-feedback" *ngIf="carPoolTripFrom.controls['duration'].invalid">Durée obligatoire</div>
-      <select name="passengers" formControlName="totalSeats" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['totalSeats'].touched && carPoolTripFrom.controls['totalSeats'].invalid}">
+      <select style="height: 50%;" name="passengers" formControlName="totalSeats" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['totalSeats'].touched && carPoolTripFrom.controls['totalSeats'].invalid}">
         <option value="1">1 passager</option>
         <option value="2">2 passagers</option>
         <option value="3">3 passagers</option>
       </select>
       <div class="invalid-feedback" *ngIf="carPoolTripFrom.controls['totalSeats'].invalid">Passagers obligatoire</div>
 
-      <select name="luggageType" formControlName="luggageType" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['luggageType'].touched && carPoolTripFrom.controls['luggageType'].invalid}">
+      <select style="height: 50%;" name="luggageType" formControlName="luggageType" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['luggageType'].touched && carPoolTripFrom.controls['luggageType'].invalid}">
         <option value="Aucun baggage">Aucun baggage</option>
         <option value="Petit sac">Petit sac</option>
         <option value="Valise cabine">Valise cabine</option>
@@ -58,7 +58,7 @@
         </div>
       </div>
       <div class="radio-group">
-        <label>Cigarette autorisée ?</label>
+        <label>Cigarette autorisées ?</label>
         <div class="radios">
           <label><input type="radio" name="smokingAllowed" [value]="true" formControlName="smokingAllowed"/> Oui</label>
           <label><input type="radio" name="smokingAllowed" [value]="false" formControlName="smokingAllowed" /> Non</label>

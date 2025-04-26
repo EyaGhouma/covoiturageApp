@@ -141,10 +141,11 @@
   top: 0;
   background: transparent;
   color: $header-light-text-color;
-  width: calc(100% - #{$Menu-width});
-  margin-left: $Menu-width;
+  background-color: #1de9b6;
   transition: all 0.3s ease-in-out;
-
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 50px;
   .m-header {
     display: none;
   }
@@ -302,7 +303,7 @@
       line-height: $header-height;
       display: inline-block;
       padding-right: 10px;
-
+      color : white;
       &:after {
         content: '\e842';
         font-family: 'feather';
@@ -311,6 +312,7 @@
         position: absolute;
         top: 0;
         right: -10px;
+        color : white;
       }
     }
 

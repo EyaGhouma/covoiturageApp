@@ -30,6 +30,7 @@ export default class AuthSignupComponent implements OnInit {
     this.userForm = new FormGroup({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
+      gender: new FormControl('homme', Validators.required),
       phoneNumber: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),

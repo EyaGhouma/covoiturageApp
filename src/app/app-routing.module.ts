@@ -47,7 +47,7 @@ export const routes: Routes = [
       },
       {
         path:'driver/:id',
-        loadComponent : () => import('./components/authentication/user-profile-comments/user-profile-commentscomponent')
+        loadComponent : () => import('./components/authentication/user-profile-comments/user-profile-comments.component')
       }
     ]
   },

@@ -11,6 +11,7 @@ export class User {
     public isActive = true,
     public isDrivingLicenseVerified = false,
     public comments = [],
-    public rateCount = 0
+    public rateCount = 0,
+    public gender = ''
   ) {}
 }
