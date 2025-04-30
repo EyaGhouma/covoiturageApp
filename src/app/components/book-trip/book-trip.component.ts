@@ -29,7 +29,8 @@ export default class BookTripComponent implements OnInit {
   ngOnInit(): void {
     this.authService.isUserConnected$.subscribe(isUserConnected => {
       this.isUserConnected = isUserConnected;
-    })
+    });
+    this.isUserConnected = this.authService.token() != null && this.authService.token() != "";
     this.route.paramMap.subscribe((params) => {
       let tripId = Number(params.get('id'));
       this.passengersNumber = Number(params.get('passengers'));

@@ -54,7 +54,7 @@ export default class SamplePageComponent {
       filters.date = {year: Number(date[0]), month: Number(date[1]), day: Number(date[2])};
       this.searchForm.patchValue(filters);
       this.availableSeats = filters.availableSeats;
-      this.getTrips();
+      this.search();
     });
   }
   initForm() {
@@ -120,7 +120,7 @@ export default class SamplePageComponent {
             date: this.searchFilter.date
           }
         });
-
+        this.getTrips();
       } else {
         this.searchForm.markAllAsTouched();
       }
