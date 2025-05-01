@@ -120,3 +120,20 @@
   background-repeat: no-repeat;
   background-position: right;
 }
+.tarjet{
+  background: url('../../../assets/images/publier-trajet-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.image-container {
+  display: flex;
+  align-items: center;        /* Centrage vertical */
+  justify-content: flex-end;  /* Alignement horizontal à droite */
+  height: 100%;               /* S'assurer qu'il prend toute la hauteur disponible */
+}
+
+.image-container img {
+  height: auto;
+  max-height: 100%;           /* Pour éviter le débordement vertical */
+  object-fit: contain;
+}

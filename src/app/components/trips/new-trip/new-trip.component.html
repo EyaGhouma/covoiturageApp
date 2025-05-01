@@ -3,16 +3,16 @@
   <div class="banner">
 
     <form class="search-form" [formGroup]="carPoolTripFrom" (submit)="save()">
-      <input type="text" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['departure'].touched && carPoolTripFrom.controls['departure'].invalid}" placeholder="Départ" name="departure" formControlName="departure" required />
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['departure'].touched && carPoolTripFrom.controls['departure'].invalid}" placeholder="Exemple: Sfax" name="departure" formControlName="departure" required />
       <div class="invalid-feedback" *ngIf="carPoolTripFrom.controls['departure'].invalid">Départ obligatoire</div>
-      <input type="text" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['arrival'].touched && carPoolTripFrom.controls['arrival'].invalid}" placeholder="Destination" name="arrival" formControlName="arrival" required />
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['arrival'].touched && carPoolTripFrom.controls['arrival'].invalid}" placeholder="Exemple: Tunis" name="arrival" formControlName="arrival" required />
       <div class="invalid-feedback" *ngIf="carPoolTripFrom.controls['arrival'].invalid">Destination obligatoire</div>
       <div class="row">
         <div class="col-9">
           <input
 				class="form-control"
         [ngClass]="{'is-invalid': carPoolTripFrom.controls['date'].touched && carPoolTripFrom.controls['date'].invalid}"
-				placeholder="yyyy-mm-dd"
+				placeholder="22-02-2025"
 				name="date"
 				ngbDatepicker
         [minDate]="minDate"
@@ -33,7 +33,7 @@
       [ngClass]="{'is-invalid': carPoolTripFrom.controls['time'].touched && carPoolTripFrom.controls['time'].invalid}" />
       <div class="invalid-feedback" *ngIf="carPoolTripFrom.controls['time'].invalid">Heure et Minute obligatoires</div>
 
-      <input type="number" name="duration" placeholder="Durée" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['duration'].touched && carPoolTripFrom.controls['duration'].invalid}"  formControlName="duration"/>
+      <input type="number" name="duration" placeholder="3h" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['duration'].touched && carPoolTripFrom.controls['duration'].invalid}"  formControlName="duration"/>
       <div class="invalid-feedback" *ngIf="carPoolTripFrom.controls['duration'].invalid">Durée obligatoire</div>
       <select style="height: 50%;" name="passengers" formControlName="totalSeats" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['totalSeats'].touched && carPoolTripFrom.controls['totalSeats'].invalid}">
         <option value="1">1 passager</option>
@@ -64,7 +64,7 @@
           <label><input type="radio" name="smokingAllowed" [value]="false" formControlName="smokingAllowed" /> Non</label>
         </div>
       </div>
-      <input type="number" name="price" placeholder="Prix (TND)"  formControlName="price" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['price'].touched && carPoolTripFrom.controls['price'].invalid}"/>
+      <input type="number" name="price" placeholder="30 (TND)"  formControlName="price" class="form-control" [ngClass]="{'is-invalid': carPoolTripFrom.controls['price'].touched && carPoolTripFrom.controls['price'].invalid}"/>
       <div class="invalid-feedback" *ngIf="carPoolTripFrom.controls['price'].invalid">Prix obligatoire</div>
 
       <button class="btn btn-rounded btn-success" type="submit">Publier un trajet</button>

@@ -7,14 +7,14 @@
   <!-- 2. Barre de recherche -->
   <div class="search-bar" [formGroup]="searchForm">
     <div class="search-field">
-      <input type="text" placeholder="Départ" formControlName="departure" class="form-control" [ngClass]="{'is-invalid': searchForm.controls['departure'].touched && searchForm.controls['departure'].invalid}" />
+      <input type="text" placeholder="Exepmle:Tunis" formControlName="departure" class="form-control" [ngClass]="{'is-invalid': searchForm.controls['departure'].touched && searchForm.controls['departure'].invalid}" />
     </div>
-    <input type="text" placeholder="Destination" formControlName="arrival" class="form-control" [ngClass]="{'is-invalid': searchForm.controls['arrival'].touched && searchForm.controls['arrival'].invalid}" />
+    <input type="text" placeholder="Exemple:Sfax" formControlName="arrival" class="form-control" [ngClass]="{'is-invalid': searchForm.controls['arrival'].touched && searchForm.controls['arrival'].invalid}" />
     <div class="search-field">
       <input
       class="form-control"
         [ngClass]="{'is-invalid': searchForm.controls['date'].touched && searchForm.controls['date'].invalid}"
-      placeholder="yyyy-mm-dd"
+      placeholder="2025-03-14"
       name="dp"
       formControlName="date"
       ngbDatepicker

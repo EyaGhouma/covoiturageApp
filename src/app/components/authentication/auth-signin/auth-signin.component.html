@@ -20,7 +20,7 @@
             <div class="input-group mb-3">
               <input type="email" class="form-control" 
                      [ngClass]="{'is-invalid': authForm.controls['email'].touched && authForm.controls['email'].invalid}" 
-                     placeholder="Email" formControlName="email" />
+                     placeholder="Exemple@gmail.com" formControlName="email" />
               <div class="invalid-feedback" *ngIf="authForm.controls['email'].invalid">
                 Email non valide
               </div>
@@ -28,7 +28,7 @@
             <div class="input-group mb-4">
               <input type="password" class="form-control" 
                      [ngClass]="{'is-invalid': authForm.controls['password'].touched && authForm.controls['password'].invalid}" 
-                     placeholder="Password" formControlName="password" aria-describedby="passwordHelpBlock" />
+                     placeholder="Entrer votre mot de passe" formControlName="password" aria-describedby="passwordHelpBlock" />
               <div class="invalid-feedback" *ngIf="authForm.controls['password'].invalid">
                 Mot de passe non valide
               </div>
