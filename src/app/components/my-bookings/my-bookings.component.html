@@ -1,6 +1,6 @@
 <div class="container" *ngIf="carPoolTripsBooking && carPoolTripsBooking.length > 0">
   <div class="row justify-content-md-center">
-
+    <div class="tarjet">
     <div class="banner">
 
       <div class="search-form col-6" *ngFor="let carPoolTrip of carPoolTripsBooking">
@@ -38,6 +38,20 @@
           <span style="margin-left: 15px;" class="badge m-r-5" [ngClass]="getStatusClasse(carPoolTrip.status)">
             {{getStatusName(carPoolTrip.status)}}
           </span>
+              <!-- Afficher les icônes seulement si le statut est 'pending' -->
+            <div *ngIf="carPoolTrip.status.toLowerCase() === 'pending'" style="display: flex; gap: 10px; margin-left: 15px;">
+
+              <!-- Bouton Modifier -->
+              <button class="btn btn-primary ng-tns-c1400480590-58 text-white" title="Modifier">
+                <i class="fas fa-pen me-1"></i> Modifier
+              </button>
+            
+              <!-- Bouton Supprimer -->
+              <button class="btn btn-danger ng-tns-c1400480590-58 text-white" title="Supprimer">
+                <i class="fas fa-trash me-1"></i> Supprimer
+              </button>
+            
+            </div>
           <span style="margin-left: 15px;" *ngIf="carPoolTrip.canComment">
             <a [routerLink]="['/book-trip-summary', carPoolTrip.carPoolTripId, carPoolTrip.driverId, carPoolTrip.passengerId]" class="dropdown-item">
               Laissez un commentaire ?
@@ -45,6 +59,7 @@
           </span>
         </span>
       </div>
+    </div>
     </div>
   </div>
 </div>
